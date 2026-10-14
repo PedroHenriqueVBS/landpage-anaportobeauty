@@ -1,0 +1,50 @@
+---
+import Brand from "./Brand.astro";
+import Icon from "./Icon.astro";
+import { whatsappLink } from "../data/site";
+
+interface Props {
+  current: "home" | "course" | "inperson";
+}
+
+const { current } = Astro.props;
+const isInPerson = current === "inperson";
+const bookingUrl = whatsappLink(
+  isInPerson
+    ? "Olá, Ana! Gostaria de saber mais sobre os cursos presenciais, as próximas turmas, o formato VIP e o local das aulas."
+    : "Olá, Ana! Gostaria de agendar um atendimento de cabelo ou maquiagem em domicílio em Campina Grande.",
+);
+---
+
+<header class="site-header header wrap">
+  <a class="site-brand-link" href="/" title="Página inicial de Ana Lucia Porto">
+    <Brand />
+  </a>
+  <nav class="site-nav" aria-label="Navegação principal">
+    <a
+      class="site-nav-link"
+      href="/"
+      aria-current={current === "home" ? "page" : undefined}>Atendimento</a
+    >
+    <a
+      class="site-nav-link"
+      href="/curso-de-penteados/"
+      aria-current={current === "course" ? "page" : undefined}>Curso online</a
+    >
+    <a
+      class="site-nav-link"
+      href="/cursos-presenciais/"
+      aria-current={current === "inperson" ? "page" : undefined}
+      >Cursos presenciais</a
+    >
+  </nav>
+  <a
+    class="site-header-contact header-link"
+    href={bookingUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {isInPerson ? "Consultar cursos" : "Agendar horário"}
+    <Icon name="arrow" />
+  </a>
+</header>

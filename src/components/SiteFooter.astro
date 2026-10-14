@@ -1,0 +1,22 @@
+---
+import Brand from "./Brand.astro";
+import { contact } from "../data/site";
+---
+
+<footer class="site-footer wrap">
+  <a class="site-brand-link" href="/" title="Página inicial de Ana Lucia Porto">
+    <Brand />
+  </a>
+  <div class="footer-contact">
+    <a href={contact.whatsappUrl}>WhatsApp {contact.phoneDisplay}</a>
+    <span>Atendimento em domicílio · Campina Grande, PB</span>
+  </div>
+  <nav class="footer-socials" aria-label="Redes sociais de Ana Lucia Porto">
+    <a href={contact.instagram} target="_blank" rel="noopener noreferrer"
+      >Instagram</a
+    >
+    <a href={contact.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a
+    >
+  </nav>
+  <p>© {new Date().getFullYear()} Ana Lucia Porto · ALPORTO Academy.</p>
+</footer>

@@ -1,0 +1,532 @@
+---
+import PageHead from "../components/PageHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import Icon from "../components/Icon.astro";
+import { contact } from "../data/site";
+import { formatPrice } from "../data/services";
+import {
+  inpersonPrograms,
+  groupTraining,
+  vipTraining,
+  enrollment,
+  cuttingMaterials,
+  inpersonQuestions,
+} from "../data/inpersonCourses";
+import "../styles/global.css";
+import "../styles/inperson.css";
+
+const title = "Cursos presenciais de beleza | Ana Lucia Porto";
+const description =
+  "Cursos presenciais de penteados, Maquiagem Pro e automaquiagem com Ana Lucia Porto. Conheça turmas, opções VIP e valores. Consulte datas pelo WhatsApp.";
+const inquiry =
+  "Olá, Ana! Gostaria de conhecer os cursos presenciais, os formatos turma e VIP, o investimento total e as próximas datas. Podemos conversar?";
+const cuttingCourse = {
+  id: "corte-e-escova",
+  name: "Corte e Escova",
+  description:
+    "Conheça também a formação em Corte e Escova. Converse com Ana sobre o conteúdo, a duração e o formato para o seu nível de experiência.",
+};
+const pageUrl = new URL("/cursos-presenciais/", Astro.site).href;
+const provider = {
+  "@type": "Organization",
+  name: "ALPORTO Academy",
+  url: Astro.site?.href,
+  telephone: contact.telephone,
+  sameAs: [contact.instagram, contact.tiktok],
+};
+// Dados do catálogo, sem datas ou localização de aula ainda não confirmadas.
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: title,
+  description,
+  url: pageUrl,
+  inLanguage: "pt-BR",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: [...inpersonPrograms, cuttingCourse].map(
+      (course, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Course",
+          name: `Curso presencial de ${course.name}`,
+          description: course.description,
+          url: `${pageUrl}#${course.id}`,
+          inLanguage: "pt-BR",
+          provider,
+          hasCourseInstance: {
+            "@type": "CourseInstance",
+            courseMode: "Onsite",
+            instructor: { "@type": "Person", name: contact.name },
+          },
+        },
+      }),
+    ),
+  },
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <PageHead
+      title={title}
+      description={description}
+      image="/images/curso-presencial-penteados-900.webp"
+      imageAlt="Cursos de beleza com Ana Lucia Porto, em turma e VIP"
+      schema={schema}
+    />
+  </head>
+  <body class="inperson-page">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <SiteHeader current="inperson" />
+    <main id="conteudo">
+      <section class="hero inperson-hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">ALPORTO ACADEMY · TURMA E VIP</p>
+          <p class="course-name">Com Ana Lucia Porto</p>
+          <h1 id="hero-title">
+            Cursos presenciais.<br /><em>Beleza na prática.</em>
+          </h1>
+          <p class="hero-description">
+            Penteados, Maquiagem Pro e Automaquiagem. Aprenda de perto, com
+            orientação de Ana, para começar ou dar um novo passo na sua técnica.
+          </p>
+          <ContactCTA
+            class="hero-checkout"
+            label="Consultar cursos e datas"
+            message={inquiry}
+          />
+          <a class="inperson-text-link inperson-hero-link" href="#cursos">
+            Conhecer os cursos <Icon name="arrow" />
+          </a>
+          <p class="hero-meta">
+            Conteúdo, local e horários combinados com Ana.
+          </p>
+        </div>
+        <figure class="inperson-hero-photo">
+          <img
+            src="/images/presencial-laco-896.webp"
+            srcset="/images/presencial-laco-480.webp 480w, /images/presencial-laco-896.webp 896w"
+            sizes="(min-width: 1100px) 490px, (min-width: 701px) 43vw, calc(100vw - 40px)"
+            width="896"
+            height="1136"
+            alt="Penteado semipreso com laço feito de cabelo e ondas no comprimento"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <figcaption>
+            <span>DO PASSO A PASSO AO ACABAMENTO</span><strong
+              >Uma técnica. Novas possibilidades.</strong
+            >
+          </figcaption>
+        </figure>
+      </section>
+      <div class="benefit-strip inperson-benefits">
+        <div class="wrap">
+          <span><Icon name="check" />Para começar ou aperfeiçoar</span>
+          <span><Icon name="sparkle" />Técnicas modernas e clássicas</span>
+          <span><Icon name="phone" />Consulte turmas e VIP</span>
+        </div>
+      </div>
+
+      <section
+        class="inperson-catalog section"
+        id="cursos"
+        aria-labelledby="programs-title"
+      >
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ESCOLHA O QUE QUER APRENDER</p><h2
+                id="programs-title"
+              >
+                Seu próximo passo<br /><em>no universo da beleza.</em>
+              </h2>
+            </div>
+            <p>
+              Conheça cada proposta e converse sobre o formato que combina com
+              seu objetivo.
+            </p>
+          </div>
+          <div class="inperson-program-grid">
+            {
+              inpersonPrograms.map((course, index) => (
+                <article
+                  class="inperson-program"
+                  id={course.id}
+                  aria-labelledby={`${course.id}-title`}
+                >
+                  <img
+                    class="inperson-poster"
+                    src={`/images/${course.poster}-900.webp`}
+                    srcset={`/images/${course.poster}-450.webp 450w, /images/${course.poster}-900.webp 900w`}
+                    sizes="(min-width: 1100px) 375px, (min-width: 701px) 44vw, calc(100vw - 40px)"
+                    width="900"
+                    height="1600"
+                    alt={course.posterAlt}
+                    loading="lazy"
+                  />
+                  <div class="inperson-program-copy">
+                    <p class="eyebrow">0{index + 1} · FORMAÇÃO PRESENCIAL</p>
+                    <h3 id={`${course.id}-title`}>{course.name}</h3>
+                    <p class="inperson-program-description">
+                      {course.description}
+                    </p>
+                    {course.id === "automaquiagem" ? (
+                      <p class="inperson-program-note">
+                        Investimento, duração e materiais sob consulta.
+                      </p>
+                    ) : (
+                      <a
+                        class="inperson-text-link inperson-program-format"
+                        href="#formatos"
+                      >
+                        Ver formatos e investimento <Icon name="arrow" />
+                      </a>
+                    )}
+                    {course.materials.length > 0 && (
+                      <details class="inperson-details">
+                        <summary>
+                          Ver lista de materiais <Icon name="plus" />
+                        </summary>
+                        <div class="inperson-details-content">
+                          {course.materials.map((category) => (
+                            <div>
+                              <h4>{category.title}</h4>
+                              <ul>
+                                {category.items.map((item) => (
+                                  <li>{item}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                          <p class="inperson-program-note">
+                            Lista de referência. Combine os itens necessários e
+                            a organização dos materiais para a sua aula.
+                          </p>
+                        </div>
+                      </details>
+                    )}
+                    <ContactCTA
+                      label={`Consultar ${course.name}`}
+                      message={course.message}
+                    />
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+          <p class="inperson-catalog-note">
+            As propostas incluem passo a passo detalhado, técnicas modernas e
+            clássicas, suporte e certificado de conclusão. Confirme as condições
+            do curso e do formato escolhido na consulta.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="inperson-formats section wrap"
+        id="formatos"
+        aria-labelledby="formats-title"
+      >
+        <div class="inperson-formats-heading">
+          <p class="eyebrow">FORMAÇÃO PROFISSIONAL</p>
+          <h2 id="formats-title">
+            Em turma ou VIP.<br /><em>Organize seu aprendizado.</em>
+          </h2>
+          <p>
+            Escolha a carga horária e combine com Ana o conteúdo para o curso
+            desejado, tanto para iniciar quanto para aperfeiçoar.
+          </p>
+          <p class="inperson-formats-note">
+            Os pacotes abaixo são as opções de formação profissional. Confirme
+            sua aplicação ao curso escolhido. Para Automaquiagem, consulte
+            investimento e duração diretamente com Ana.
+          </p>
+          <div class="inperson-reservation">
+            <h3>Como reservar</h3>
+            <p>
+              Sinal de <strong
+                >{enrollment.depositPercent}% do valor do curso</strong
+              > + taxa de inscrição de <strong
+                >{formatPrice({ price: enrollment.fee })}</strong
+              >, via Pix. A taxa de inscrição é adicional aos valores dos
+              pacotes.
+            </p>
+            <p>
+              O restante é pago no dia do curso: Pix, dinheiro ou cartão, com
+              juros da maquineta. Consulte o total, o local e as condições de
+              cancelamento antes do pagamento.
+            </p>
+          </div>
+        </div>
+        <div class="inperson-format-list">
+          <article class="inperson-group-card">
+            <p class="eyebrow">APRENDER EM TURMA</p>
+            <h3>Pacote Turma</h3>
+            <p class="inperson-group-price">
+              <strong>{formatPrice({ price: groupTraining.price })}</strong
+              ><span>por aluno(a) · taxa de inscrição à parte</span>
+            </p>
+            <ul class="included">
+              <li>
+                <Icon name="check" />A partir de {groupTraining.minimumStudents} pessoas
+              </li>
+              <li>
+                <Icon name="check" />{groupTraining.hours} horas em {
+                  groupTraining.days
+                } tardes de {groupTraining.hoursPerDay} horas
+              </li>
+              <li>
+                <Icon name="check" />Aulas 100% práticas, com aplicação no
+                atendimento social e de noivas
+              </li>
+              <li>
+                <Icon name="check" />Assessoria por WhatsApp durante {
+                  groupTraining.supportMonths
+                } meses após o curso
+              </li>
+              <li><Icon name="check" />Certificado digital e impresso</li>
+            </ul>
+            <p class="inperson-program-note">
+              Organização das modelos a combinar com Ana.
+            </p>
+            <ContactCTA
+              label="Consultar próxima turma"
+              message="Olá, Ana! Gostaria de informações sobre o pacote Turma dos cursos presenciais: curso disponível, próximas datas, formação da turma e valor total com inscrição."
+            />
+          </article>
+          <article class="inperson-vip-card">
+            <p class="eyebrow">FORMAÇÃO PERSONALIZADA</p>
+            <h3>Pacote VIP</h3>
+            <p>
+              Combine o conteúdo e a organização das aulas conforme a carga
+              horária escolhida.
+            </p>
+            <dl class="inperson-offers">
+              {
+                vipTraining.map((offer) => (
+                  <div class="inperson-offer">
+                    <dt>
+                      <>
+                        <span>{offer.hours} horas de aulas</span>
+                        <strong>{formatPrice({ price: offer.price })}</strong>
+                      </>
+                    </dt>
+                  </div>
+                ))
+              }
+            </dl>
+            <p class="inperson-program-note">
+              Taxa de inscrição de {formatPrice({ price: enrollment.fee })} à parte.
+              Confirme certificado, suporte, local e horários do formato VIP.
+            </p>
+            <ContactCTA
+              label="Conversar sobre o VIP"
+              message="Olá, Ana! Tenho interesse no pacote VIP de um curso presencial. Gostaria de combinar o conteúdo, a carga horária, o local, o suporte e o valor total com inscrição."
+            />
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="inperson-extra section"
+        id="corte-e-escova"
+        aria-labelledby="cutting-title"
+      >
+        <div class="wrap inperson-extra-grid">
+          <div>
+            <p class="eyebrow">MAIS CAMINHOS PARA APRENDER</p>
+            <h2 id="cutting-title">
+              Corte e Escova.<br /><em>Amplie sua prática.</em>
+            </h2>
+            <p>{cuttingCourse.description}</p>
+            <ContactCTA
+              label="Consultar Corte e Escova"
+              message="Olá, Ana! Quero conhecer o curso presencial de Corte e Escova. Pode me informar o conteúdo, o formato, a duração, os materiais e o valor total?"
+            />
+          </div>
+          <details class="inperson-details">
+            <summary>Materiais para Corte e Escova <Icon name="plus" /></summary
+            >
+            <div class="inperson-details-content">
+              {
+                cuttingMaterials.map((category) => (
+                  <div>
+                    <>
+                      <h3>{category.title}</h3>
+                      <ul>
+                        {category.items.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    </>
+                  </div>
+                ))
+              }
+              <p class="inperson-program-note">
+                Lista de referência. Confirme os materiais para o curso e as
+                técnicas combinadas.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="inperson-gallery section" aria-labelledby="gallery-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">BELEZA EM CADA DETALHE</p><h2
+                id="gallery-title"
+              >
+                Da preparação<br /><em>ao acabamento.</em>
+              </h2>
+            </div>
+            <p>
+              Referências de maquiagem e penteados para inspirar o seu próximo
+              passo na prática.
+            </p>
+          </div>
+          <div class="inperson-gallery-grid">
+            <figure>
+              <img
+                src="/images/presencial-maquiagem-1000.webp"
+                srcset="/images/presencial-maquiagem-540.webp 540w, /images/presencial-maquiagem-1000.webp 1000w"
+                sizes="(min-width: 701px) 430px, calc(50vw - 30px)"
+                width="1000"
+                height="1364"
+                alt="Maquiagem com sombra iluminada, pele finalizada e batom rosado"
+                loading="lazy"
+              />
+              <figcaption>Maquiagem</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="/images/presencial-coque-896.webp"
+                srcset="/images/presencial-coque-480.webp 480w, /images/presencial-coque-896.webp 896w"
+                sizes="(min-width: 701px) 430px, calc(50vw - 30px)"
+                width="896"
+                height="1136"
+                alt="Penteado preso em coque com volume e mechas de acabamento"
+                loading="lazy"
+              />
+              <figcaption>Penteados</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="teacher section" aria-labelledby="teacher-title">
+        <div class="wrap teacher-grid">
+          <figure class="inperson-mentor-photo">
+            <img
+              src="/images/ana-mentora-960.webp"
+              srcset="/images/ana-mentora-480.webp 480w, /images/ana-mentora-960.webp 960w"
+              sizes="(min-width: 701px) 43vw, calc(100vw - 40px)"
+              width="960"
+              height="1440"
+              alt="Ana Lucia Porto, mentora de beleza, com materiais de cabelo e maquiagem"
+              loading="lazy"
+            />
+            <figcaption>
+              <strong>Ana Lucia Porto</strong><span
+                >PENTEADISTA · MAQUIADORA · CABELEIREIRA</span
+              >
+            </figcaption>
+          </figure>
+          <div class="teacher-copy">
+            <p class="eyebrow">SUA MENTORA BEAUTY</p>
+            <h2 id="teacher-title">
+              Aprender de perto.<br /><em>Com orientação de Ana.</em>
+            </h2>
+            <p>
+              À frente da ALPORTO Academy, Ana compartilha sua experiência em
+              cabelo e maquiagem com uma metodologia prática e descomplicada.
+            </p>
+            <p>
+              A proposta acompanha quem está começando e quem deseja aperfeiçoar
+              a técnica, com atenção à beleza e à essência de cada pessoa.
+            </p>
+            <ContactCTA label="Conversar com a mentora" message={inquiry} />
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="faq inperson-faq section wrap"
+        aria-labelledby="faq-title"
+      >
+        <div>
+          <p class="eyebrow">ANTES DE ESCOLHER SUA FORMAÇÃO</p><h2
+            id="faq-title"
+          >
+            Dúvidas<br /><em>frequentes.</em>
+          </h2><p>Sobre formatos, materiais, reserva e as aulas presenciais.</p>
+        </div>
+        <div class="faq-list">
+          {
+            inpersonQuestions.map(({ question, answer }, index) => (
+              <details class="faq-item" open={index === 0}>
+                <>
+                  <summary>
+                    {question}
+                    <Icon name="plus" />
+                  </summary>
+                  <div class="faq-answer">
+                    <p>{answer}</p>
+                  </div>
+                </>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="inperson-online-link wrap" aria-labelledby="online-title">
+        <div>
+          <p class="eyebrow">ALPORTO ACADEMY · APRENDA NO SEU RITMO</p><h2
+            id="online-title"
+          >
+            Conheça também<br /><em>o curso online de penteados.</em>
+          </h2><p>
+            O Descomplica Penteado está disponível para você aprender pelo
+            celular, tablet ou computador.
+          </p>
+        </div>
+        <a class="inperson-text-link" href="/curso-de-penteados/"
+          >Conhecer o curso online <Icon name="arrow" /></a
+        >
+      </section>
+
+      <section
+        class="final-cta inperson-contact"
+        id="contato"
+        aria-labelledby="contact-title"
+      >
+        <div class="wrap">
+          <p class="eyebrow">SEU PRÓXIMO PASSO COMEÇA COM UMA CONVERSA</p>
+          <h2 id="contact-title">
+            Conte o seu objetivo.<br /><em>Vamos escolher seu curso.</em>
+          </h2>
+          <p>
+            Envie o curso desejado e sua disponibilidade. Ana combina com você o
+            formato, o local e os detalhes da reserva.
+          </p>
+          <ContactCTA
+            label="Quero informações sobre os cursos"
+            message={inquiry}
+          />
+          <p class="final-note">
+            WhatsApp {contact.phoneDisplay} · consulte datas e disponibilidade
+          </p>
+        </div>
+      </section>
+    </main>
+    <SiteFooter />
+  </body>
+</html>

@@ -1,0 +1,83 @@
+---
+import Icon from "./Icon.astro";
+const questions = [
+  [
+    "Preciso ter experiência com penteados?",
+    "Não. O curso é voltado para iniciantes, com explicações simples e passo a passo. Você pode começar do zero e praticar conforme aprende.",
+  ],
+  [
+    "Quais materiais vou precisar?",
+    "Os materiais variam conforme o penteado. A referência da professora inclui pentes, escovas, grampos, elásticos, finalizadores e equipamentos como secador e babyliss. Consulte a lista abaixo para se organizar.",
+  ],
+  [
+    "Posso assistir pelo celular?",
+    "Sim. Você pode assistir pelo celular, tablet ou computador, com conexão à internet.",
+  ],
+  [
+    "Por quanto tempo tenho acesso?",
+    "O material oficial da oferta informa acesso vitalício. Você pode assistir e rever as aulas no seu ritmo.",
+  ],
+  [
+    "Como recebo o acesso ao curso?",
+    "A compra é realizada pela Kiwify. Após a confirmação do pagamento, siga as instruções enviadas ao e-mail cadastrado na compra. O tempo de confirmação depende da forma de pagamento.",
+  ],
+  [
+    "O curso é totalmente online?",
+    "Sim. As aulas são online, para você aprender em casa e organizar a prática de acordo com a sua rotina.",
+  ],
+];
+---
+
+<div class="faq-list">
+  {
+    questions.map(([question, answer], index) => (
+      <details class="faq-item" open={index === 0}>
+        <>
+          <summary>
+            {question}
+            <Icon name="plus" />
+          </summary>
+          <div class="faq-answer">
+            <p>{answer}</p>
+            {index === 1 && (
+              <details class="materials">
+                <summary>
+                  Ver lista de materiais <Icon name="plus" />
+                </summary>
+                <div class="materials-content">
+                  <p>
+                    Referência da professora. Os itens utilizados variam
+                    conforme a técnica.
+                  </p>
+                  <h4>Equipamentos</h4>
+                  <ul>
+                    <li>Secador, chapinha e prancha de frizz</li>
+                    <li>Babyliss de 25 mm ou 19 mm</li>
+                    <li>Tri-ondas</li>
+                  </ul>
+                  <h4>Materiais</h4>
+                  <ul>
+                    <li>Enchimento de rosquinha</li>
+                    <li>Grampos 5 e 7; grampo de marcação (opcional)</li>
+                    <li>Acessórios para penteados</li>
+                    <li>Elásticos de silicone e de látex</li>
+                    <li>
+                      Pente garfo, pente largo, pente fino de eriçar e escovas
+                    </li>
+                    <li>Spray fixador normal ou extra forte</li>
+                    <li>Mousse modelador e texturizador líquido</li>
+                    <li>Cera em bastão e cera líquida</li>
+                    <li>Pomadas modeladoras com brilho ou efeito matte</li>
+                    <li>Estojo organizador com divisões</li>
+                    <li>Mega hair de aplicação simples</li>
+                    <li>Bicos de pato e piranhas</li>
+                  </ul>
+                </div>
+              </details>
+            )}
+          </div>
+        </>
+      </details>
+    ))
+  }
+</div>

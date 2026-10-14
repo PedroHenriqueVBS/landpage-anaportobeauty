@@ -1,0 +1,340 @@
+---
+import CTA from "../components/CTA.astro";
+import PageHead from "../components/PageHead.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import FAQ from "../components/FAQ.astro";
+import "../styles/global.css";
+import CoursePhoto from "../components/CoursePhoto.astro";
+import Icon from "../components/Icon.astro";
+const techniques: {
+  n: string;
+  name: string;
+  kind: "braid" | "half" | "pony";
+  text: string;
+}[] = [
+  {
+    n: "01",
+    name: "Tranças",
+    kind: "braid",
+    text: "Conheça técnicas como trança embutida, lateral, espinha de peixe e cascata.",
+  },
+  {
+    n: "02",
+    name: "Semipreso",
+    kind: "half",
+    text: "Explore a combinação de cabelos soltos e tranças em um penteado delicado.",
+  },
+  {
+    n: "03",
+    name: "Rabo de cavalo",
+    kind: "pony",
+    text: "Descubra como as tranças podem transformar um penteado clássico.",
+  },
+];
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "Descomplica Penteado",
+  description:
+    "Curso online de tranças e penteados para iniciantes, com Ana Lucia Porto.",
+  inLanguage: "pt-BR",
+  provider: { "@type": "Organization", name: "ALPORTO Academy" },
+  hasCourseInstance: {
+    "@type": "CourseInstance",
+    courseMode: "online",
+    instructor: { "@type": "Person", name: "Ana Lucia Porto" },
+  },
+  offers: {
+    "@type": "Offer",
+    price: "47.00",
+    priceCurrency: "BRL",
+    url: "https://pay.kiwify.com.br/TVxs1tl",
+    category: "Paid",
+  },
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <PageHead
+      title="Descomplica Penteado | Curso online com Ana Lucia Porto"
+      description="Aprenda tranças e penteados do zero com Ana Lucia Porto. Curso online para iniciantes, com aulas passo a passo. Conheça o Descomplica Penteado por R$ 47."
+      imageAlt="Ana Lucia Porto, educadora da ALPORTO Academy"
+      schema={schema}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <SiteHeader current="course" />
+    <main id="conteudo">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">ALPORTO ACADEMY · CURSO ONLINE</p>
+          <p class="course-name">Descomplica Penteado</p>
+          <h1 id="hero-title">
+            Aprenda penteados.<br /><em>Comece do zero.</em>
+          </h1>
+          <p class="hero-description">
+            Tranças e penteados explicados passo a passo por Ana Lucia Porto.
+            Para aprender em casa, mesmo sem experiência.
+          </p>
+          <p class="hero-price">
+            <strong>R$ 47,00</strong> à vista <span aria-hidden="true">·</span> acesso
+            vitalício
+          </p>
+          <CTA class="hero-checkout" />
+          <p class="hero-meta">
+            No seu ritmo. No celular, tablet ou computador.
+          </p>
+        </div>
+        <figure class="hero-art">
+          <CoursePhoto eager /><figcaption>
+            <span>DA PRIMEIRA TRANÇA</span><strong
+              >a novas possibilidades.</strong
+            >
+          </figcaption>
+        </figure>
+      </section>
+      <div class="benefit-strip">
+        <div class="wrap">
+          <span><Icon name="play" />Aulas passo a passo</span><span
+            ><Icon name="repeat" />Assista quantas vezes quiser</span
+          ><span><Icon name="phone" />100% online</span>
+        </div>
+      </div>
+      <section class="intro section wrap">
+        <div>
+          <p class="eyebrow">FEITO PARA QUEM ESTÁ COMEÇANDO</p><h2>
+            Não é sobre ter um dom.<br /><em>É sobre aprender.</em>
+          </h2>
+        </div>
+        <div class="intro-copy">
+          <p>
+            Já tentou seguir um tutorial e se perdeu no meio? Você não precisa
+            saber tudo antes de começar.
+          </p><p>
+            Entenda a técnica, acompanhe cada movimento e dê espaço à prática.
+            Um penteado de cada vez.
+          </p>
+        </div>
+        <div class="journey">
+          <span
+            ><small>SEU PONTO DE PARTIDA</small>“Não sei por onde começar.”</span
+          ><span class="journey-arrow" aria-hidden="true">→</span><strong
+            ><small>SEU PRÓXIMO PASSO</small>Aprender a fazer, <em
+              >passo a passo.</em
+            ></strong
+          >
+        </div>
+      </section>
+      <section class="learn section" aria-labelledby="learn-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">O QUE VOCÊ VAI APRENDER</p><h2
+                id="learn-title"
+              >
+                Da trança aos<br /><em>seus novos penteados.</em>
+              </h2>
+            </div><p>
+              Técnicas e combinações para praticar.<br />Do primeiro movimento à
+              finalização.
+            </p>
+          </div>
+          <div class="techniques">
+            {
+              techniques.map((t) => (
+                <article class="technique">
+                  <>
+                    <CoursePhoto variant={t.kind} />
+                    <div class="technique-copy">
+                      <>
+                        <span class="photo-number" aria-hidden="true">
+                          {t.n}
+                        </span>
+                        <h3>{t.name}</h3>
+                        <p>{t.text}</p>
+                      </>
+                    </div>
+                  </>
+                </article>
+              ))
+            }
+          </div>
+          <p class="image-note">
+            Imagens ilustrativas do material oficial do curso.
+          </p>
+          <div class="section-action">
+            <p>
+              Seu primeiro penteado começa com o primeiro passo.<strong
+                >Curso completo por R$ 47,00 à vista.</strong
+              >
+            </p><CTA label="Quero começar a aprender" />
+          </div>
+        </div>
+      </section>
+      <section class="experience section wrap">
+        <div>
+          <p class="eyebrow">APRENDA NO SEU RITMO</p><h2>
+            Uma aula.<br />Uma pausa.<br /><em>Uma nova tentativa.</em>
+          </h2><p>
+            Não precisa acertar de primeira. Volte ao passo a passo sempre que
+            precisar.
+          </p>
+        </div><ol class="feature-list">
+          <li>
+            <span>01</span><div>
+              <h3>Assista com atenção</h3><p>
+                Acompanhe as explicações e observe cada movimento, na tela que
+                você preferir.
+              </p>
+            </div>
+          </li><li>
+            <span>02</span><div>
+              <h3>Pause para praticar</h3><p>
+                Separe seus materiais e experimente a técnica no seu tempo.
+              </p>
+            </div>
+          </li><li>
+            <span>03</span><div>
+              <h3>Volte e aperfeiçoe</h3><p>
+                Com acesso vitalício, você pode rever as aulas e continuar
+                praticando.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section class="teacher section">
+        <div class="wrap teacher-grid">
+          <figure class="teacher-image">
+            <div class="portrait">
+              <img
+                src="/images/ana-1200.webp"
+                width="1200"
+                height="1600"
+                loading="lazy"
+                alt="Ana Lucia Porto com secador, na fotografia oficial da ALPORTO Academy"
+              />
+            </div><figcaption>
+              <strong>Ana Lucia Porto</strong><span
+                >EDUCADORA · ALPORTO ACADEMY</span
+              >
+            </figcaption>
+          </figure><div class="teacher-copy">
+            <p class="eyebrow">QUEM VAI TE ENSINAR</p><h2>
+              Ana Lucia Porto.<br /><em>Com você, em cada passo.</em>
+            </h2><p>
+              Educadora e expert em penteados à frente da ALPORTO Academy, Ana
+              Lucia traz uma proposta simples: descomplicar o começo, com
+              atenção a cada técnica.
+            </p><p>
+              No Descomplica Penteado, ela apresenta o universo das tranças e
+              penteados para quem quer sair da vontade e começar a praticar.
+            </p><blockquote>
+              “Transformando cabelos,<br />realizando sonhos!”
+            </blockquote>
+          </div>
+        </div>
+      </section>
+      <section class="offer section wrap" id="oferta">
+        <div class="offer-copy">
+          <p class="eyebrow">SEU PRÓXIMO PASSO</p><h2>
+            Comece hoje.<br /><em>Aprenda no seu tempo.</em>
+          </h2><p>
+            Um curso para transformar a vontade de aprender em prática, sem sair
+            de casa.
+          </p><h3>Seu acesso inclui</h3><ul class="included">
+            <li><Icon name="check" />Curso online de tranças e penteados</li><li
+            >
+              <Icon name="check" />Aulas explicadas passo a passo
+            </li><li>
+              <Icon name="check" />Semipreso e rabo de cavalo com tranças
+            </li><li>
+              <Icon name="check" />Acesso pelo celular, tablet ou computador
+            </li><li><Icon name="check" />Acesso vitalício às aulas</li>
+          </ul>
+        </div>
+        <div class="offer-card">
+          <p class="eyebrow">ALPORTO ACADEMY</p><h3>
+            Descomplica<br /><em>Penteado</em>
+          </h3><p class="offer-format">
+            Online · para iniciantes · acesso vitalício
+          </p><div class="offer-rule"></div><p class="price-caption">
+            Pagamento único
+          </p><p class="price">
+            <span>R$</span><strong>47</strong><span>,00</span>
+          </p><p class="payment">à vista, sem mensalidade</p><CTA
+            variant="light"
+            label="Quero meu acesso ao curso"
+          /><p class="checkout-note">Continue sua inscrição na Kiwify.</p><div
+            class="payment-methods"
+          >
+            <span>Pix</span><span>Cartão</span><span>Boleto</span>
+          </div><p class="installments">
+            Parcelamento com acréscimo disponível no checkout.
+          </p>
+        </div>
+      </section>
+      <section class="faq section wrap">
+        <div>
+          <p class="eyebrow">ANTES DE COMEÇAR</p><h2>
+            Dúvidas<br /><em>frequentes.</em>
+          </h2><p>
+            Do material à primeira aula:<br />o que você precisa saber.
+          </p>
+        </div><FAQ />
+      </section>
+      <section class="final-cta">
+        <div class="wrap">
+          <p class="eyebrow">DESCOMPLICA PENTEADO · ALPORTO ACADEMY</p><h2>
+            Você traz a vontade.<br /><em>Ana te ensina o caminho.</em>
+          </h2><p>Aprenda do zero por <strong>R$ 47,00 à vista.</strong></p><CTA
+            label="Quero aprender com a Ana"
+          /><p class="final-note">
+            Curso online · acesso vitalício · no seu ritmo
+          </p>
+        </div>
+      </section>
+    </main>
+    <SiteFooter />
+    <aside class="mobile-cta" aria-label="Inscrição no curso" hidden>
+      <span
+        >Descomplica Penteado<strong>R$ 47,00 <small>à vista</small></strong
+        ></span
+      ><CTA label="Quero aprender" />
+    </aside>
+    <script>
+      // O CTA fixo aparece após o hero, sem competir com outro botão de compra visível.
+      const bar = document.querySelector<HTMLElement>(".mobile-cta");
+      const heroCTA = document.querySelector<HTMLElement>(".hero-checkout");
+      const inlineCTAs = [
+        ...document.querySelectorAll<HTMLElement>("main .cta"),
+      ];
+      if (bar && heroCTA && "IntersectionObserver" in window) {
+        const mobile = window.matchMedia("(max-width: 700px)");
+        const update = () => {
+          const passedHero = heroCTA.getBoundingClientRect().bottom < 0;
+          const visibleCTA = inlineCTAs.some((cta) => {
+            const rect = cta.getBoundingClientRect();
+            return rect.bottom > 0 && rect.top < window.innerHeight;
+          });
+          // Não remove do foco um link que a visitante está usando pelo teclado.
+          const hasFocus = bar.contains(document.activeElement);
+          bar.hidden =
+            !mobile.matches || (!hasFocus && (!passedHero || visibleCTA));
+        };
+        const observer = new IntersectionObserver(update, {
+          threshold: [0, 1],
+        });
+        inlineCTAs.forEach((cta) => observer.observe(cta));
+        mobile.addEventListener("change", update);
+        window.addEventListener("resize", update, { passive: true });
+        bar.addEventListener("focusout", () => requestAnimationFrame(update));
+        update();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,436 @@
+.inperson-hero .hero-description {
+  max-width: 490px;
+}
+.inperson-hero .hero-checkout {
+  margin-top: 26px;
+}
+.inperson-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 44px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+}
+.inperson-text-link:hover {
+  color: var(--gold);
+}
+.inperson-text-link .icon {
+  width: 17px;
+  height: 17px;
+}
+.inperson-hero-link {
+  display: flex;
+  width: fit-content;
+  margin-top: 14px;
+}
+.inperson-hero-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 0.95;
+  border-radius: 220px 220px 4px 4px;
+  background: #c1bfb6;
+}
+.inperson-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 24%;
+}
+.inperson-hero-photo figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  background: var(--brown);
+  color: var(--paper);
+  padding: 18px 24px;
+}
+.inperson-hero-photo figcaption span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #e5cda9;
+}
+.inperson-hero-photo figcaption strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 500;
+  margin-top: 4px;
+}
+.inperson-benefits .wrap {
+  justify-content: flex-start;
+  gap: 12px 24px;
+}
+.inperson-catalog {
+  background: var(--paper);
+}
+.inperson-program-grid {
+  display: grid;
+  gap: 30px;
+}
+.inperson-program {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--cream);
+}
+.inperson-poster {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--line);
+}
+.inperson-program-copy {
+  padding: 26px 22px;
+}
+.inperson-program-copy .eyebrow {
+  margin-bottom: 12px;
+}
+.inperson-program h3 {
+  font-size: 37px;
+  line-height: 1.1;
+}
+.inperson-program-description {
+  margin-top: 16px;
+  font-size: 15px;
+}
+.inperson-offers {
+  margin: 24px 0 0;
+}
+.inperson-offer {
+  border-top: 1px solid var(--line);
+  padding-block: 16px;
+}
+.inperson-offer dt {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.inperson-offer dt strong {
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.inperson-program-note {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 14px;
+}
+.inperson-program-copy > .cta {
+  margin-top: 22px;
+  font-size: 14px;
+  padding-inline: 18px;
+  gap: 12px;
+}
+.inperson-details {
+  border-block: 1px solid var(--line);
+  margin-top: 22px;
+}
+.inperson-details summary {
+  font-size: 14px;
+  min-height: 58px;
+  padding-block: 16px;
+}
+.inperson-details-content {
+  padding: 0 0 18px;
+}
+.inperson-details-content h3,
+.inperson-details-content h4 {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 14px 0 8px;
+}
+.inperson-details-content h3:first-child,
+.inperson-details-content h4:first-child {
+  margin-top: 0;
+}
+.inperson-details-content ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.inperson-details-content li {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+  margin-block: 6px;
+}
+.inperson-catalog-note {
+  margin-top: 25px;
+  max-width: 760px;
+  font-size: 13px;
+}
+.inperson-formats {
+  display: grid;
+  gap: 30px;
+}
+.inperson-formats-heading h2 {
+  margin-bottom: 20px;
+}
+.inperson-formats-heading > p:last-child {
+  max-width: 470px;
+}
+.inperson-format-list {
+  display: grid;
+  gap: 24px;
+}
+.inperson-format-list article {
+  padding: 26px 24px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.inperson-format-list h3 {
+  font-size: 31px;
+  margin-bottom: 12px;
+}
+.inperson-format-list p {
+  font-size: 15px;
+}
+.inperson-gallery {
+  background: var(--brown);
+  color: var(--paper);
+}
+.inperson-gallery .eyebrow,
+.inperson-gallery em {
+  color: #e2c497;
+}
+.inperson-gallery .section-heading > p {
+  color: #e0d3c2;
+}
+.inperson-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.inperson-gallery-grid figure {
+  min-width: 0;
+}
+.inperson-gallery-grid img {
+  width: 100%;
+  aspect-ratio: 0.75;
+  object-fit: cover;
+  border-radius: 100px 100px 3px 3px;
+}
+.inperson-gallery-grid figcaption {
+  margin-top: 14px;
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.2;
+  color: #e2c497;
+}
+.inperson-faq {
+  border-top: 0;
+}
+.inperson-online-link {
+  display: grid;
+  gap: 20px;
+  padding-block: 30px;
+  margin-bottom: 64px;
+  border-top: 1px solid var(--line);
+}
+.inperson-online-link .eyebrow {
+  margin-bottom: 12px;
+}
+.inperson-online-link h2 {
+  font-size: 33px;
+  line-height: 1.15;
+}
+.inperson-online-link p:not(.eyebrow) {
+  margin-top: 12px;
+  font-size: 14px;
+}
+.inperson-online-link > a {
+  justify-self: start;
+}
+.inperson-contact .wrap > p:not(.eyebrow) {
+  max-width: 560px;
+  margin-inline: auto;
+}
+@media (min-width: 701px) {
+  .inperson-hero-photo {
+    aspect-ratio: 0.82;
+  }
+  .inperson-hero h1 {
+    font-size: clamp(43px, 5vw, 70px);
+  }
+  .inperson-benefits .wrap {
+    justify-content: space-between;
+  }
+  .inperson-program-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  .inperson-program:last-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .inperson-program:last-child .inperson-poster {
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+    align-self: start;
+  }
+  .inperson-program-copy {
+    padding: 30px 24px;
+  }
+  .inperson-formats {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 55px;
+    align-items: start;
+  }
+  .inperson-gallery-grid {
+    max-width: 900px;
+    margin-inline: auto;
+    gap: 40px;
+  }
+  .inperson-gallery-grid img {
+    aspect-ratio: 0.95;
+    border-radius: 180px 180px 3px 3px;
+  }
+  .inperson-gallery-grid figcaption {
+    font-size: 32px;
+  }
+  .inperson-online-link {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+}
+@media (min-width: 1100px) {
+  .inperson-hero-photo {
+    aspect-ratio: 0.94;
+  }
+  .inperson-program-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .inperson-program:last-child {
+    grid-column: auto;
+    display: block;
+  }
+  .inperson-program:last-child .inperson-poster {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .inperson-program-copy {
+    padding: 30px 24px;
+  }
+}
+.inperson-program-format {
+  margin-top: 18px;
+  font-size: 13px;
+}
+.inperson-formats-note {
+  font-size: 13px;
+  margin-top: 20px;
+}
+.inperson-reservation {
+  margin-top: 28px;
+  padding: 24px;
+  background: #eae1d4;
+  border-left: 2px solid var(--gold);
+}
+.inperson-reservation h3 {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+.inperson-reservation p {
+  font-size: 14px;
+}
+.inperson-reservation strong {
+  color: var(--brown);
+  font-weight: 600;
+}
+.inperson-format-list .eyebrow {
+  margin-bottom: 12px;
+}
+.inperson-format-list > article > .cta {
+  margin-top: 20px;
+}
+.inperson-group-price strong {
+  font-size: 33px;
+  font-weight: 500;
+  color: var(--brown);
+  line-height: 1.2;
+}
+.inperson-group-price span {
+  display: block;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.inperson-format-list .included li {
+  padding-block: 7px;
+  font-size: 14px;
+}
+.inperson-vip-card > p:not(.eyebrow) {
+  font-size: 14px;
+}
+.inperson-extra {
+  background: var(--paper);
+}
+.inperson-extra-grid {
+  display: grid;
+  gap: 25px;
+}
+.inperson-extra-grid h2 {
+  margin-bottom: 20px;
+}
+.inperson-extra-grid .cta {
+  margin-top: 24px;
+  max-width: 380px;
+}
+.inperson-extra .inperson-details {
+  margin: 0;
+  align-self: start;
+}
+.inperson-mentor-photo {
+  min-width: 0;
+}
+.inperson-mentor-photo img {
+  width: 100%;
+  aspect-ratio: 1.2;
+  object-fit: cover;
+  object-position: 50% 65%;
+  border-radius: 4px 4px 0 0;
+}
+.inperson-mentor-photo figcaption {
+  padding: 18px 22px;
+  border-left: 2px solid var(--gold);
+  background: var(--paper);
+}
+.inperson-mentor-photo figcaption strong {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 30px;
+  display: block;
+  line-height: 1.2;
+}
+.inperson-mentor-photo figcaption span {
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  color: var(--muted);
+  display: block;
+  margin-top: 7px;
+}
+.inperson-page .teacher-copy .cta {
+  margin-top: 25px;
+}
+@media (min-width: 701px) {
+  .inperson-extra-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+  }
+  .inperson-mentor-photo img {
+    aspect-ratio: 0.95;
+  }
+}

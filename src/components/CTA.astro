@@ -1,0 +1,19 @@
+---
+import Icon from "./Icon.astro";
+interface Props {
+  label?: string;
+  variant?: "light" | "dark";
+  class?: string;
+}
+const {
+  label = "Quero aprender penteados",
+  variant = "dark",
+  class: className = "",
+} = Astro.props;
+---
+
+<a
+  href="https://pay.kiwify.com.br/TVxs1tl"
+  class:list={["cta", `cta--${variant}`, className]}
+  >{label}<Icon name="arrow" /></a
+>

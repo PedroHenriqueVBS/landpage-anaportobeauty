@@ -1,0 +1,24 @@
+---
+interface Props {
+  variant?: "braid" | "half" | "pony";
+  eager?: boolean;
+}
+const { variant = "braid", eager = false } = Astro.props;
+const descriptions = {
+  braid:
+    "Detalhe de uma trança em cabeça de treino, do material oficial do curso",
+  half: "Semipreso com trança e cabelos soltos, do material oficial do curso",
+  pony: "Rabo de cavalo com trança, do material oficial do curso",
+};
+---
+
+<div class:list={["course-photo", `course-photo--${variant}`]}>
+  <img
+    src="/images/curso-1024.webp"
+    width="1024"
+    height="1536"
+    alt={descriptions[variant]}
+    loading={eager ? "eager" : "lazy"}
+    fetchpriority={eager ? "high" : "auto"}
+  />
+</div>

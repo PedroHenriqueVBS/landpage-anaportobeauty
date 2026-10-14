@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  image = "/images/ana-1200.webp",
+  imageAlt = "Ana Lucia Porto, cabeleireira e maquiadora em Campina Grande",
+  schema,
+} = Astro.props;
+
+// O domínio vem do deploy: evita publicar URLs canônicas de um endereço de teste.
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : undefined;
+const socialImage = Astro.site ? new URL(image, Astro.site).href : image;
+const structuredData = schema
+  ? JSON.stringify(schema).replace(/</g, "\\u003c")
+  : undefined;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="theme-color" content="#f6f2ea" />
+{canonical && <link rel="canonical" href={canonical} />}
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Ana Lucia Porto · ALPORTO" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{canonical && <meta property="og:url" content={canonical} />}
+<meta property="og:image" content={socialImage} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImage} />
+<meta name="twitter:image:alt" content={imageAlt} />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link
+  rel="preload"
+  href="/fonts/cormorant-latin.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+{
+  structuredData && (
+    <script type="application/ld+json" set:html={structuredData} />
+  )
+}

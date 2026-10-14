@@ -1,0 +1,25 @@
+---
+import Icon from "./Icon.astro";
+import { whatsappLink } from "../data/site";
+interface Props {
+  label?: string;
+  message?: string;
+  variant?: "light" | "dark";
+  class?: string;
+}
+const {
+  label = "Agendar pelo WhatsApp",
+  message = "Olá, Ana! Gostaria de agendar um atendimento de cabelo ou maquiagem em domicílio em Campina Grande. Pode me informar a disponibilidade?",
+  variant = "dark",
+  class: className = "",
+} = Astro.props;
+---
+
+<a
+  href={whatsappLink(message)}
+  class:list={["cta", `cta--${variant}`, className]}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  {label}<Icon name="arrow" />
+</a>

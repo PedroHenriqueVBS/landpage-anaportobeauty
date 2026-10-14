@@ -1,0 +1,39 @@
+---
+interface Props {
+  name:
+    | "arrow"
+    | "check"
+    | "play"
+    | "phone"
+    | "repeat"
+    | "plus"
+    | "home"
+    | "sparkle";
+}
+const { name } = Astro.props;
+const paths = {
+  arrow: "M5 19 19 5M5 5h14v14",
+  check: "m5 12 4 4L19 6",
+  play: "m9 5 11 7-11 7V5Z",
+  phone:
+    "M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm3 14h2",
+  repeat:
+    "M20 7H7a4 4 0 0 0-4 4m17-4-4-4m4 4-4 4M4 17h13a4 4 0 0 0 4-4M4 17l4 4m-4-4 4-4",
+  plus: "M12 5v14M5 12h14",
+  home: "m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Zm6 11v-8h6v8",
+  sparkle: "m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z",
+};
+---
+
+<svg
+  class="icon"
+  viewBox="0 0 24 24"
+  width="24"
+  height="24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"><path d={paths[name]}></path></svg
+>
