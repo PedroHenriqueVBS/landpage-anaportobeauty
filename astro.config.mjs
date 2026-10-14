@@ -1,3 +1,4 @@
+import { versionStaticAssets } from "./scripts/version-static-assets.mjs";
 import { defineConfig } from "astro/config";
 import { writeFile } from "node:fs/promises";
 
@@ -30,6 +31,7 @@ export default defineConfig({
       name: "alporto-sitemap",
       hooks: {
         "astro:build:done": async ({ dir, pages }) => {
+          await versionStaticAssets(dir);
           const entries = pages.map(({ pathname }) => {
             const location = new URL(pathname, `${site}/`).href
               .replace(/&/g, "&amp;")

@@ -1,4 +1,5 @@
 ---
+import { onlineCourse } from "../data/site";
 import CTA from "../components/CTA.astro";
 import PageHead from "../components/PageHead.astro";
 import SiteHeader from "../components/SiteHeader.astro";
@@ -49,7 +50,7 @@ const schema = {
     "@type": "Offer",
     price: "47.00",
     priceCurrency: "BRL",
-    url: "https://pay.kiwify.com.br/TVxs1tl",
+    url: onlineCourse.checkoutUrl,
     category: "Paid",
   },
 };
@@ -59,7 +60,7 @@ const schema = {
 <html lang="pt-BR">
   <head>
     <PageHead
-      title="Descomplica Penteado | Curso online com Ana Lucia Porto"
+      title="Curso de penteados online para iniciantes | Ana Porto"
       description="Aprenda tranças e penteados do zero com Ana Lucia Porto. Curso online para iniciantes, com aulas passo a passo. Conheça o Descomplica Penteado por R$ 47."
       imageAlt="Ana Lucia Porto, educadora da ALPORTO Academy"
       schema={schema}
@@ -74,7 +75,7 @@ const schema = {
           <p class="eyebrow">ALPORTO ACADEMY · CURSO ONLINE</p>
           <p class="course-name">Descomplica Penteado</p>
           <h1 id="hero-title">
-            Aprenda penteados.<br /><em>Comece do zero.</em>
+            Curso de penteados online.<br /><em>Comece do zero.</em>
           </h1>
           <p class="hero-description">
             Tranças e penteados explicados passo a passo por Ana Lucia Porto.

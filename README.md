@@ -66,3 +66,13 @@ Os documentos `docs/design.md` e `docs/auditoria-visual.md` registram versões a
 Build estático concluído com as três páginas. Layout e aba ativa conferidos em 320, 390, 768, 1024 e 1440 px, sem rolagem horizontal; FAQ, listas de materiais por clique e teclado, recursos locais e URLs de WhatsApp/checkout conferidos. Lighthouse mobile na nova página de cursos presenciais: SEO 100, acessibilidade 100 e boas práticas 100. Isso não representa medição de tráfego real nem comprovação de posicionamento no Google.
 
 Em 14/10/2026, o domínio oficial foi configurado. Canonical, URLs de compartilhamento, dados estruturados, sitemap e robots do build foram conferidos para `https://anaportobeauty.com.br`. DNS, HTTPS público e publicação dependem da configuração da hospedagem.
+
+## Otimizações de SEO e desempenho — 14/10/2026
+
+O curso online usa título e H1 descritivos, e o botão do cabeçalho segue para o checkout centralizado em `src/data/site.ts`. A navegação mobile ocupa uma linha com rolagem horizontal e links de pelo menos 44 px de altura. O conteúdo de agendamento destaca Campina Grande e as condições de deslocamento confirmadas. Bairros específicos, novas fotos autorizadas e cidade/endereço das aulas permanecem pendentes de confirmação.
+
+`npm run images:course` gera recortes responsivos a partir da arte WebP já incluída. Os maiores recortes juntos têm 54.498 bytes, contra 219.036 bytes da arte anterior. O recorte principal é reutilizado no hero e na seção de técnicas. Não há ampliação artificial na geração dos arquivos.
+
+No build, `scripts/version-static-assets.mjs` cria cópias de imagens e fontes em `/media/` com hash do conteúdo e atualiza HTML (incluindo srcset e dados estruturados) e CSS. Os caminhos antigos continuam disponíveis. `public/_headers` configura um ano de cache imutável apenas para `/media/*`, em hospedagens compatíveis com esse arquivo, como Cloudflare Pages. Se o provedor ignorar `_headers`, configure a mesma regra nele. Não aplique cache imutável aos caminhos antigos nem ao HTML. O cache em produção só estará confirmado após publicar e verificar o cabeçalho HTTP de uma URL versionada.
+
+Validação desta alteração: build concluído; referências locais, srcset, JSON-LD e hashes conferidos; três páginas sem overflow horizontal em 320 e 1440 px e curso inspecionado visualmente em 390 px. Não foi realizada nova medição de Lighthouse/Core Web Vitals nem publicação.

@@ -1,7 +1,7 @@
 ---
 import Brand from "./Brand.astro";
 import Icon from "./Icon.astro";
-import { whatsappLink } from "../data/site";
+import { whatsappLink, onlineCourse } from "../data/site";
 
 interface Props {
   current: "home" | "course" | "inperson";
@@ -37,14 +37,22 @@ const bookingUrl = whatsappLink(
       aria-current={current === "inperson" ? "page" : undefined}
       >Cursos presenciais</a
     >
+    <a class="site-nav-link" href="/#parceiros-e-eventos">Parceiros e eventos</a
+    >
   </nav>
   <a
     class="site-header-contact header-link"
-    href={bookingUrl}
-    target="_blank"
+    href={current === "course" ? onlineCourse.checkoutUrl : bookingUrl}
+    target={current === "course" ? undefined : "_blank"}
     rel="noopener noreferrer"
   >
-    {isInPerson ? "Consultar cursos" : "Agendar horário"}
+    {
+      current === "course"
+        ? "Quero aprender"
+        : isInPerson
+          ? "Consultar cursos"
+          : "Agendar horário"
+    }
     <Icon name="arrow" />
   </a>
 </header>

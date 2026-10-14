@@ -11,3 +11,7 @@ export const contact = {
 export function whatsappLink(message: string): string {
   return `${contact.whatsappUrl}?text=${encodeURIComponent(message)}`;
 }
+
+export const onlineCourse = {
+  checkoutUrl: "https://pay.kiwify.com.br/TVxs1tl",
+} as const;

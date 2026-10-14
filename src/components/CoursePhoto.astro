@@ -4,6 +4,9 @@ interface Props {
   eager?: boolean;
 }
 const { variant = "braid", eager = false } = Astro.props;
+const widths = { braid: [195, 390], half: [111, 222], pony: [114, 228] };
+const [small, large] = widths[variant];
+const height = variant === "braid" ? 435 : 184;
 const descriptions = {
   braid:
     "Detalhe de uma trança em cabeça de treino, do material oficial do curso",
@@ -14,9 +17,13 @@ const descriptions = {
 
 <div class:list={["course-photo", `course-photo--${variant}`]}>
   <img
-    src="/images/curso-1024.webp"
-    width="1024"
-    height="1536"
+    src={`/images/curso-${variant}-${large}.webp`}
+    srcset={`/images/curso-${variant}-${small}.webp ${small}w, /images/curso-${variant}-${large}.webp ${large}w`}
+    sizes={eager
+      ? "(min-width: 1100px) 490px, (min-width: 701px) 43vw, calc(100vw - 40px)"
+      : "(min-width: 1100px) 375px, (min-width: 701px) 30vw, calc(100vw - 40px)"}
+    width={large}
+    height={height}
     alt={descriptions[variant]}
     loading={eager ? "eager" : "lazy"}
     fetchpriority={eager ? "high" : "auto"}

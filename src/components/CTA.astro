@@ -1,4 +1,5 @@
 ---
+import { onlineCourse } from "../data/site";
 import Icon from "./Icon.astro";
 interface Props {
   label?: string;
@@ -13,7 +14,7 @@ const {
 ---
 
 <a
-  href="https://pay.kiwify.com.br/TVxs1tl"
+  href={onlineCourse.checkoutUrl}
   class:list={["cta", `cta--${variant}`, className]}
   >{label}<Icon name="arrow" /></a
 >

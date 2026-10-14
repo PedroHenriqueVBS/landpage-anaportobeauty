@@ -3,6 +3,7 @@ import PageHead from "../components/PageHead.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import ContactCTA from "../components/ContactCTA.astro";
+import PartnersSection from "../components/PartnersSection.astro";
 import Icon from "../components/Icon.astro";
 import { contact, whatsappLink } from "../data/site";
 import {
@@ -262,11 +263,12 @@ const schema = {
         <div>
           <p class="eyebrow">VAMOS COMBINAR?</p>
           <h2 id="booking-title">
-            Seu atendimento,<br /><em>em três passos.</em>
+            Beleza em Campina Grande.<br /><em>Agende em três passos.</em>
           </h2>
           <p>
-            Uma conversa para organizar o serviço, o local e o horário de que
-            você precisa.
+            Cabelo e maquiagem em domicílio em Campina Grande, Paraíba. Envie
+            seu bairro, endereço e horário para confirmar a disponibilidade.
+            Para outras localidades, consulte antes de reservar.
           </p>
         </div>
         <ol class="feature-list">
@@ -281,8 +283,9 @@ const schema = {
           <li>
             <span aria-hidden="true">02</span><div>
               <h3>Combine os detalhes com Ana</h3><p>
-                Confirme disponibilidade, valor total, deslocamento e
-                orientações para o atendimento.
+                Confirme disponibilidade, valor total e orientações para o
+                atendimento. Para noivas, o traslado é cobrado à parte; nos
+                demais serviços, combine as condições de deslocamento.
               </p>
             </div>
           </li>
@@ -392,6 +395,8 @@ const schema = {
           >
         </div>
       </section>
+
+      <PartnersSection />
 
       <section
         class="final-cta contact-section"

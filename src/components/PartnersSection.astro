@@ -1,0 +1,54 @@
+---
+import ContactCTA from "./ContactCTA.astro";
+
+const formats = [
+  "Workshops presenciais",
+  "Masterclasses",
+  "Cursos técnicos especializados",
+  "Mentorias profissionais",
+  "Eventos exclusivos e ativações de marca",
+];
+---
+
+<section class="partners-section section" id="parceiros-e-eventos" aria-labelledby="partners-title">
+  <div class="wrap">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">ALPORTO ACADEMY · PARCERIAS</p>
+        <h2 id="partners-title">Parceiros e eventos.<br /><em>Vamos crescer juntos.</em></h2>
+      </div>
+      <p>Educação, experiência prática e autoridade técnica para fortalecer marcas e formar profissionais da beleza. Construa seu próximo evento com Ana Lucia Porto.</p>
+    </div>
+
+    <div class="partners-grid">
+      <article class="partners-formats">
+        <p class="eyebrow">FORMATOS DE ATUAÇÃO</p>
+        <h3>Conhecimento que<br /><em>conecta pessoas.</em></h3>
+        <ul>
+          {formats.map((format) => <li>{format}</li>)}
+        </ul>
+        <ContactCTA label="Conversar sobre uma parceria" message="Olá, Ana! Tenho interesse em uma parceria com a ALPorto Academy para um evento. Gostaria de conversar sobre o formato, a data, o local, o número de participantes e as condições comerciais." />
+      </article>
+
+      <div class="partners-conditions">
+        <article class="partners-commercial">
+          <p class="eyebrow">MODELO COMERCIAL</p>
+          <h3>Uma parceria alinhada<br />desde o início.</h3>
+          <!-- As faixas do catálogo dependem de negociação; não são percentuais fixos. -->
+          <dl class="partners-shares">
+            <div><dt>Educadora</dt><dd>50% a 70%</dd></div>
+            <div><dt>Parceiro</dt><dd>30% a 50%</dd></div>
+          </dl>
+          <p>Os percentuais são negociáveis conforme a demanda, a estrutura do evento, o formato das aulas e as responsabilidades de cada parte.</p>
+          <p>A divisão é definida em negociação presencial, com alinhamento antecipado ao evento.</p>
+        </article>
+        <article class="partners-costs">
+          <p class="eyebrow">CUSTOS OPERACIONAIS</p>
+          <h3>Cada evento tem seus detalhes.</h3>
+          <p>Deslocamento, ajuda de custo e alimentação são negociados conforme o local, a duração, a estrutura necessária, a equipe envolvida e o volume de participantes.</p>
+          <p class="partners-agreement">Todos os termos serão formalmente acordados antes da realização do evento.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
